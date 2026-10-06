@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robotic Hand Tracking Test</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="camera-panel" aria-label="Webcam hand tracking">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Local first test</p>
+            <h1>Robotic Hand Tracker</h1>
+          </div>
+          <div class="status-strip">
+            <span id="handStatus" class="status-pill">Hand: NO</span>
+            <span id="fpsStatus" class="status-pill">FPS: 0</span>
+          </div>
+        </div>
+
+        <div id="videoStage" class="video-stage mirrored">
+          <video id="inputVideo" autoplay playsinline muted></video>
+          <canvas id="overlayCanvas"></canvas>
+          <div id="cameraMessage" class="camera-message">Starting camera...</div>
+        </div>
+
+        <div class="controls-bar" aria-label="Tracking controls">
+          <button id="startCameraButton" type="button">Start Camera</button>
+          <button id="calibrateOpenButton" type="button">Calibrate Open Hand</button>
+          <button id="calibrateClosedButton" type="button">Calibrate Closed Hand</button>
+          <button id="stopButton" type="button" class="danger">STOP</button>
+          <button id="resetButton" type="button">RESET</button>
+          <label class="toggle-control">
+            <input id="mirrorToggle" type="checkbox" checked />
+            <span>Mirror Camera</span>
+          </label>
+        </div>
+
+        <p id="appMessage" class="app-message" role="status">Waiting for webcam permission.</p>
+      </section>
+
+      <section class="servo-panel" aria-label="Simulated servo controls">
+        <div class="panel-header compact">
+          <div>
+            <p class="eyebrow">Simulated output</p>
+            <h2>Servo Angles</h2>
+          </div>
+          <span id="outputStatus" class="status-pill">Live</span>
+        </div>
+
+        <div id="servoList" class="servo-list"></div>
+      </section>
+
+      <section class="debug-panel" aria-label="Debug panel">
+        <div class="panel-header compact">
+          <div>
+            <p class="eyebrow">Debug</p>
+            <h2>Current Values</h2>
+          </div>
+        </div>
+        <dl class="debug-list">
+          <div>
+            <dt>Hand detected</dt>
+            <dd id="debugHand">NO</dd>
+          </div>
+          <div>
+            <dt>Thumb</dt>
+            <dd id="debugThumb">0°</dd>
+          </div>
+          <div>
+            <dt>Index</dt>
+            <dd id="debugIndex">0°</dd>
+          </div>
+          <div>
+            <dt>Middle</dt>
+            <dd id="debugMiddle">0°</dd>
+          </div>
+          <div>
+            <dt>Ring</dt>
+            <dd id="debugRing">0°</dd>
+          </div>
+          <div>
+            <dt>Pinky</dt>
+            <dd id="debugPinky">0°</dd>
+          </div>
+        </dl>
+        <pre id="commandPreview" class="command-preview" aria-label="Servo command JSON"></pre>
+      </section>
+    </main>
+
+    <script src="/mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="/mediapipe/hands/hands.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

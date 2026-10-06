@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+._*
+
+# Editors
+.vscode/
+.idea/
+
+# Secrets and local environment
+.env
+.env.*
+*.pem
+*.key
+
+# Node / web prototype
+node_modules/
+web/node_modules/
+dist/
+web/dist/
+web/public/mediapipe/
+npm-debug.log*
+
+# Arduino / ESP8266 build outputs
+.arduino/
+build/
+*.bin
+*.elf
+*.hex
+*.map
+*.eep
+*.lst
+
+# Temporary files
+*.tmp
+*.temp
+*.log
